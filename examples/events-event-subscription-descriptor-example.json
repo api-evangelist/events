@@ -1,0 +1,30 @@
+{
+  "id": "fulfillment.orders-placed",
+  "name": "Fulfillment <- orders.placed",
+  "description": "Fulfillment service consumes orders.placed and creates a pick list.",
+  "sourceId": "orders.placed",
+  "deliveryMode": "pull",
+  "consumerGroup": "fulfillment-service",
+  "subscriptionType": "shared",
+  "ackMode": "manual",
+  "filter": {
+    "language": "cloudevents-sql",
+    "expression": "type = 'com.example.orders.placed.v1' AND data.totalCents > 1000"
+  },
+  "retry": {
+    "maxAttempts": 5,
+    "backoff": "exponential-jitter",
+    "initialIntervalSeconds": 2,
+    "maxIntervalSeconds": 60,
+    "maxRetentionHours": 24
+  },
+  "deadLetter": {
+    "kind": "topic",
+    "target": "orders.placed.dlq"
+  },
+  "owner": {
+    "team": "Fulfillment",
+    "email": "fulfillment@example.com"
+  },
+  "tags": ["fulfillment", "orders", "production"]
+}

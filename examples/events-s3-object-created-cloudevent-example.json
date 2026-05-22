@@ -1,0 +1,18 @@
+{
+  "specversion": "1.0",
+  "type": "com.amazonaws.s3.object.created",
+  "source": "aws:s3:us-east-1:111122223333:bucket/event-archive",
+  "subject": "raw/2026-05-22/orders-014.ndjson",
+  "id": "C6E0E5C2-8F8F-4F2C-8E14-7E2D5C0B1F02",
+  "time": "2026-05-22T14:09:01.034Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "bucket": "event-archive",
+    "key": "raw/2026-05-22/orders-014.ndjson",
+    "versionId": "tWf6T9z6dHc8z8Z4f3D5x",
+    "size": 18324192,
+    "etag": "9b1a4e1e23eebc1d1ff4f0a3a40fdbe7",
+    "eventName": "ObjectCreated:Put",
+    "region": "us-east-1"
+  }
+}

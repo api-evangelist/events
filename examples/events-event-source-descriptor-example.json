@@ -1,0 +1,33 @@
+{
+  "id": "orders.placed",
+  "name": "Order Placed",
+  "description": "Emitted by order-service when a customer order is accepted into the OMS.",
+  "broker": "Apache Kafka",
+  "protocol": "Kafka",
+  "transportEndpoint": "kafka://kafka.svc.cluster.local:9092",
+  "topicOrChannel": "orders.placed",
+  "partitionCount": 12,
+  "retention": {
+    "duration": "P7D",
+    "compaction": false
+  },
+  "deliveryGuarantee": "at-least-once",
+  "orderingScope": "partition",
+  "cloudEventsSource": "/services/order-service",
+  "cloudEventsTypes": [
+    "com.example.orders.placed.v1"
+  ],
+  "schemaRegistry": {
+    "vendor": "Confluent Schema Registry",
+    "url": "https://schema-registry.example.com",
+    "subject": "orders.placed-value",
+    "format": "Avro",
+    "compatibility": "BACKWARD"
+  },
+  "asyncApi": "https://api.example.com/asyncapi/orders.yaml",
+  "owner": {
+    "team": "Commerce Platform",
+    "email": "commerce-platform@example.com"
+  },
+  "tags": ["orders", "commerce", "kafka", "production"]
+}

@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ce": "https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md#",
+    "async": "https://www.asyncapi.com/ns#",
+    "apis": "http://apisjson.org/ns#",
+    "events": "https://api-evangelist.github.io/events/vocab#",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "version": "schema:version",
+    "identifier": "schema:identifier",
+    "license": "schema:license",
+    "publisher": {
+      "@id": "schema:publisher",
+      "@type": "@id"
+    },
+
+    "CloudEvent": {
+      "@id": "ce:Event",
+      "@type": "@id",
+      "schema:subClassOf": "schema:Event"
+    },
+    "EventSource": {
+      "@id": "events:EventSource",
+      "@type": "@id",
+      "schema:subClassOf": "schema:Service"
+    },
+    "EventSubscription": {
+      "@id": "events:EventSubscription",
+      "@type": "@id",
+      "schema:subClassOf": "schema:Action"
+    },
+    "Broker": {
+      "@id": "events:Broker",
+      "@type": "@id",
+      "schema:subClassOf": "schema:SoftwareApplication"
+    },
+    "Topic": {
+      "@id": "events:Topic",
+      "@type": "@id"
+    },
+    "Channel": {
+      "@id": "async:Channel",
+      "@type": "@id"
+    },
+    "Partition": {
+      "@id": "events:Partition",
+      "@type": "@id"
+    },
+    "ConsumerGroup": {
+      "@id": "events:ConsumerGroup",
+      "@type": "@id"
+    },
+    "Producer": {
+      "@id": "events:Producer",
+      "@type": "@id",
+      "schema:subClassOf": "schema:SoftwareApplication"
+    },
+    "Consumer": {
+      "@id": "events:Consumer",
+      "@type": "@id",
+      "schema:subClassOf": "schema:SoftwareApplication"
+    },
+    "SchemaRegistry": {
+      "@id": "events:SchemaRegistry",
+      "@type": "@id"
+    },
+
+    "id": "ce:id",
+    "source": {
+      "@id": "ce:source",
+      "@type": "@id"
+    },
+    "specversion": "ce:specversion",
+    "type": "ce:type",
+    "datacontenttype": "ce:datacontenttype",
+    "dataschema": {
+      "@id": "ce:dataschema",
+      "@type": "@id"
+    },
+    "subject": "ce:subject",
+    "time": {
+      "@id": "ce:time",
+      "@type": "schema:DateTime"
+    },
+    "data": "ce:data",
+
+    "topicOrChannel": "events:topicOrChannel",
+    "partitionCount": "events:partitionCount",
+    "deliveryGuarantee": "events:deliveryGuarantee",
+    "deliveryMode": "events:deliveryMode",
+    "orderingScope": "events:orderingScope",
+    "retention": "events:retention",
+    "qosLevel": "events:qosLevel",
+    "ackMode": "events:ackMode",
+    "subscriptionType": "events:subscriptionType",
+    "consumerGroup": "events:consumerGroup",
+    "filter": "events:filter",
+    "retry": "events:retry",
+    "deadLetter": "events:deadLetter",
+
+    "protocol": "events:protocol",
+    "transportEndpoint": {
+      "@id": "events:transportEndpoint",
+      "@type": "@id"
+    },
+    "asyncApi": {
+      "@id": "events:asyncApi",
+      "@type": "@id"
+    },
+    "schemaRegistry": {
+      "@id": "events:schemaRegistry",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://github.com/api-evangelist/events",
+      "@type": "schema:Dataset",
+      "name": "API Evangelist Events Topic",
+      "description": "Catalog of event-driven APIs: brokers, streaming platforms, schema registries, and the CloudEvents and AsyncAPI specifications.",
+      "publisher": {
+        "@type": "schema:Organization",
+        "name": "API Evangelist"
+      }
+    },
+    {
+      "@id": "https://cloudevents.io",
+      "@type": "schema:CreativeWork",
+      "name": "CloudEvents",
+      "description": "CNCF-graduated specification for describing event data in a common way.",
+      "version": "1.0.2"
+    },
+    {
+      "@id": "https://www.asyncapi.com",
+      "@type": "schema:CreativeWork",
+      "name": "AsyncAPI",
+      "description": "Linux Foundation specification for event-driven APIs."
+    }
+  ]
+}

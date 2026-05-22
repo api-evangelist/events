@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/events/json-schema/events-event-subscription-schema.json",
+  "title": "Event Subscription",
+  "description": "Descriptor for a subscription that consumes events from one or more event sources. Models Kafka consumer groups, Pulsar subscriptions, EventBridge rules, Event Grid event subscriptions, Pub/Sub subscriptions (push and pull), MQTT topic filters, and webhook callbacks.",
+  "type": "object",
+  "required": ["id", "name", "sourceId", "deliveryMode"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable identifier for the subscription within the catalog."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable subscription name."
+    },
+    "description": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "Identifier of the upstream Event Source this subscription consumes from."
+    },
+    "deliveryMode": {
+      "type": "string",
+      "enum": ["push", "pull", "stream"],
+      "description": "How events reach the consumer. 'push' for webhook-style HTTP POST or Pub/Sub push; 'pull' for poll-and-ack (Kafka consumer, Pub/Sub pull, Event Grid pull); 'stream' for long-lived streaming HTTP/WebSocket."
+    },
+    "deliveryEndpoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Required for push delivery. The webhook or service URL events are POSTed to."
+    },
+    "deliveryHeaders": {
+      "type": "object",
+      "description": "Static headers added to push deliveries (e.g. signing secrets, authorization tokens). Values SHOULD reference secrets, not contain them."
+    },
+    "filter": {
+      "type": "object",
+      "description": "Filter expression that scopes which events this subscription receives.",
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": ["jsonpath", "cel", "event-pattern", "subject-prefix", "regex", "cloudevents-sql"]
+        },
+        "expression": { "type": "string" }
+      }
+    },
+    "retry": {
+      "type": "object",
+      "description": "Retry policy for failed deliveries.",
+      "properties": {
+        "maxAttempts": { "type": "integer", "minimum": 1 },
+        "backoff": {
+          "type": "string",
+          "enum": ["fixed", "linear", "exponential", "exponential-jitter"]
+        },
+        "initialIntervalSeconds": { "type": "integer", "minimum": 0 },
+        "maxIntervalSeconds": { "type": "integer", "minimum": 0 },
+        "maxRetentionHours": { "type": "integer", "minimum": 0, "description": "How long the broker keeps trying before giving up. AWS EventBridge defaults to 24 hours." }
+      }
+    },
+    "deadLetter": {
+      "type": "object",
+      "description": "Where to send events that exhaust the retry policy.",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["topic", "queue", "url", "none"]
+        },
+        "target": { "type": "string" }
+      }
+    },
+    "consumerGroup": {
+      "type": "string",
+      "description": "Kafka/Redpanda consumer-group ID, or Pulsar subscription name."
+    },
+    "subscriptionType": {
+      "type": "string",
+      "enum": ["exclusive", "shared", "failover", "key_shared"],
+      "description": "Pulsar subscription type. Maps onto similar concepts in other brokers."
+    },
+    "ackMode": {
+      "type": "string",
+      "enum": ["auto", "manual", "cumulative"]
+    },
+    "qosLevel": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "MQTT QoS: 0 at most once, 1 at least once, 2 exactly once."
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "team": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

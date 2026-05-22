@@ -1,0 +1,21 @@
+{
+  "specversion": "1.0",
+  "type": "com.example.orders.placed.v1",
+  "source": "/services/order-service",
+  "subject": "order-7c1f9a2e",
+  "id": "01HZQF3K7T0RPMK6N3CXVQXX2A",
+  "time": "2026-05-22T14:08:17Z",
+  "datacontenttype": "application/json",
+  "dataschema": "https://schemas.example.com/orders/placed/v1.json",
+  "data": {
+    "orderId": "7c1f9a2e",
+    "customerId": "cust_9d23",
+    "items": [
+      { "sku": "WIDGET-BLUE", "quantity": 2, "unitPriceCents": 1299 },
+      { "sku": "WIDGET-RED",  "quantity": 1, "unitPriceCents": 1599 }
+    ],
+    "totalCents": 4197,
+    "currency": "USD",
+    "placedAt": "2026-05-22T14:08:16.812Z"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "specversion": "1.0",
+  "type": "com.github.pull_request.opened",
+  "source": "https://github.com/api-evangelist/events",
+  "subject": "pull_request/42",
+  "id": "ab12cd34-5678-90ef-1234-567890abcdef",
+  "time": "2026-05-22T13:45:09Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "action": "opened",
+    "number": 42,
+    "pull_request": {
+      "id": 1567890123,
+      "title": "Add CloudEvents 1.0 example payloads",
+      "user": { "login": "kinlane" },
+      "head": { "ref": "examples/cloudevents", "sha": "8a4f2c9b1d3e5f7a9b1c3d5e7f9a1b3c5d7e9f1a" },
+      "base": { "ref": "main",                 "sha": "1f3e5d7b9a1c3e5f7b9d1f3a5c7e9b1d3f5a7c9e" }
+    },
+    "repository": {
+      "id": 987654321,
+      "name": "events",
+      "full_name": "api-evangelist/events"
+    },
+    "sender": { "login": "kinlane" }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/events/json-schema/events-cloudevent-schema.json",
+  "title": "CloudEvent",
+  "description": "A CloudEvents 1.0 event record. Aligns with the CNCF CloudEvents v1.0.2 specification: required context attributes id, source, specversion, type; optional datacontenttype, dataschema, subject, time; plus the data payload and CloudEvents extension attributes.",
+  "type": "object",
+  "required": ["id", "source", "specversion", "type"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifies the event. Producers MUST ensure that source + id is unique for each distinct event. Consumers MAY assume the id is opaque."
+    },
+    "source": {
+      "type": "string",
+      "format": "uri-reference",
+      "minLength": 1,
+      "description": "Identifies the context in which an event happened. Often the type of the event source, the organization publishing the event, or the process that produced the event. URI-reference per RFC 3986."
+    },
+    "specversion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "The version of the CloudEvents specification the event uses. MUST be '1.0' for the current stable release."
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Describes the type of event related to the originating occurrence. Typically a reverse-DNS name (e.g. com.github.pull_request.opened)."
+    },
+    "datacontenttype": {
+      "type": "string",
+      "description": "Content type of the data value. Follows RFC 2046 (e.g. application/json, application/cloudevents+json). When absent and data is present, JSON is conventional."
+    },
+    "dataschema": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI identifying the schema that data adheres to. Often points to a JSON Schema, Avro schema, or Protobuf descriptor."
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifies the subject of the event in the context of the event producer (identified by source). Useful for filtering."
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the occurrence happened, RFC 3339 / ISO 8601."
+    },
+    "data": {
+      "description": "The event payload. May be any JSON value when datacontenttype is application/json; for binary content use data_base64."
+    },
+    "data_base64": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "description": "Base64-encoded binary event payload, mutually exclusive with data."
+    }
+  },
+  "allOf": [
+    {
+      "not": {
+        "required": ["data", "data_base64"]
+      }
+    }
+  ],
+  "additionalProperties": {
+    "description": "CloudEvents extension attributes. Names MUST be lowercase alphanumeric, MUST NOT collide with reserved names, and values MUST be one of: Boolean, Integer, String, Binary, URI, URI-reference, Timestamp."
+  }
+}

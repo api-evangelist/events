@@ -1,0 +1,280 @@
+name: Events Vocabulary
+description: >-
+  Vocabulary for event-driven APIs. Captures the wire-level primitives that
+  appear in messages and the architectural concepts that shape how event
+  systems are designed and operated. Sourced from CloudEvents v1.0.2 (CNCF),
+  AsyncAPI (Linux Foundation), Apache Kafka, Apache Pulsar, NATS, MQTT 5.0
+  (OASIS), AMQP 1.0 (OASIS / ISO 19464), AWS EventBridge, Azure Event Grid,
+  and Google Cloud Pub/Sub documentation.
+url: https://github.com/api-evangelist/events
+version: '0.1.0'
+created: '2026-05-22'
+modified: '2026-05-22'
+
+operational:
+  description: >-
+    Wire-level concepts that appear in event payloads, broker control planes,
+    and protocol frames.
+
+  actors:
+    - name: Producer
+      description: >-
+        Application or service that publishes events to a broker, topic, bus,
+        or channel.
+    - name: Consumer
+      description: >-
+        Application or service that receives events from a broker. May join a
+        consumer group for load-balanced delivery.
+    - name: Subscriber
+      description: >-
+        Specific kind of consumer that registers interest in a topic, subject,
+        or filter expression with a broker.
+    - name: Broker
+      description: >-
+        Server-side component that accepts events from producers and routes
+        them to consumers. Examples: Kafka broker, Pulsar broker, NATS server,
+        EventBridge bus, MQTT broker.
+    - name: Bridge
+      description: >-
+        Component that forwards events between two brokers or transports
+        (e.g. Kafka <-> MQTT bridge, Event Grid <-> Service Bus).
+
+  envelope:
+    - name: id
+      description: >-
+        CloudEvents required attribute. Identifies the event. Producers MUST
+        ensure that source + id is unique for each distinct event.
+    - name: source
+      description: >-
+        CloudEvents required attribute. Identifies the context in which an
+        event happened. URI-reference per RFC 3986.
+    - name: specversion
+      description: CloudEvents required attribute. Currently MUST be "1.0".
+    - name: type
+      description: >-
+        CloudEvents required attribute. Describes the type of event related to
+        the originating occurrence. Reverse-DNS conventional.
+    - name: datacontenttype
+      description: CloudEvents optional. RFC 2046 content type of the data value.
+    - name: dataschema
+      description: CloudEvents optional. URI identifying the schema for data.
+    - name: subject
+      description: >-
+        CloudEvents optional. Identifies the subject of the event in the
+        context of the event producer.
+    - name: time
+      description: CloudEvents optional. RFC 3339 timestamp of the occurrence.
+    - name: data
+      description: The event payload. Structured JSON value or base64-encoded binary.
+
+  storage:
+    - name: Topic
+      description: >-
+        Named channel that producers publish to and consumers subscribe to.
+        Kafka, Pulsar, Pub/Sub, MQTT, and EventBridge all use the term.
+    - name: Partition
+      description: >-
+        Ordered, append-only subdivision of a Kafka or Pulsar topic. Provides
+        the unit of parallelism and ordering.
+    - name: Offset
+      description: >-
+        Monotonically increasing position within a partition. Kafka consumers
+        commit offsets to track progress.
+    - name: Subject
+      description: >-
+        NATS topic name in dotted notation (e.g. orders.placed). Supports
+        wildcards (* single token, > tail).
+    - name: Queue
+      description: >-
+        AMQP / IBM MQ / RabbitMQ destination where each message is consumed by
+        exactly one worker.
+    - name: Stream
+      description: >-
+        NATS JetStream durable persistent log; Pulsar topic configured for
+        retention; Kinesis stream.
+    - name: Channel
+      description: AsyncAPI top-level concept; pathlike address for messages.
+
+  protocols:
+    - name: Kafka Protocol
+      description: Binary protocol over TCP; the de facto streaming wire format.
+    - name: AMQP 1.0
+      description: OASIS standard and ISO/IEC 19464 binary protocol with nodes, links, sessions, frames.
+    - name: AMQP 0-9-1
+      description: Earlier RabbitMQ-canonical binary protocol with exchanges, queues, bindings.
+    - name: MQTT 5.0
+      description: OASIS standard publish/subscribe protocol for IoT, with QoS 0/1/2.
+    - name: MQTT 3.1.1
+      description: Earlier widely deployed version of MQTT.
+    - name: NATS Protocol
+      description: Plain-text NATS wire protocol with optional JetStream binary extensions.
+    - name: STOMP
+      description: Simple Text Oriented Messaging Protocol, frequently used over WebSockets.
+    - name: WebSocket
+      description: Bidirectional HTTP-upgraded channel commonly used for MQTT-over-WS and STOMP.
+    - name: HTTP Push
+      description: Webhook-style POST delivery used by EventBridge, Event Grid push, and Pub/Sub push subscriptions.
+    - name: HTTP Pull
+      description: Long-poll or batch fetch used by Pub/Sub pull subscriptions and Event Grid pull delivery.
+    - name: Pulsar Binary Protocol
+      description: Native Pulsar wire protocol over TCP.
+
+  delivery:
+    - name: At Most Once
+      description: Event may be dropped under failure. MQTT QoS 0, fire-and-forget NATS.
+    - name: At Least Once
+      description: Event will be delivered, possibly more than once. Default for most brokers.
+    - name: Exactly Once
+      description: >-
+        Event delivered exactly once end-to-end. MQTT QoS 2 within the
+        protocol; Kafka transactional producer + idempotent consumer; Pulsar
+        de-duplicated produce.
+    - name: Ordering
+      description: >-
+        Order preservation. Kafka: per partition. Pub/Sub: per ordering key.
+        Pulsar: per partition or per key with Key_Shared subscription.
+    - name: Retention
+      description: How long stored events remain available for replay or new subscribers.
+    - name: Compaction
+      description: Kafka/Pulsar log compaction; keep only the latest value per key.
+    - name: Dead Letter
+      description: Destination for events that exhaust the retry policy.
+
+capability:
+  description: >-
+    Architectural concepts that shape how event systems are designed,
+    governed, and operated.
+
+  models:
+    - name: Pub Sub
+      description: Many-to-many fan-out where each subscriber receives a copy of every event.
+    - name: Queue
+      description: Point-to-point load balancing where each event is consumed by exactly one worker.
+    - name: Stream
+      description: >-
+        Durable, ordered, partitioned log that consumers read by offset.
+        Replayable.
+    - name: Event Sourcing
+      description: Storing every state change as an immutable event so state can be rebuilt by replay.
+    - name: CQRS
+      description: Command/Query Responsibility Segregation; commonly paired with event sourcing.
+    - name: Saga
+      description: Long-running distributed transaction modeled as a sequence of compensating events.
+
+  governance:
+    - name: Schema Registry
+      description: Centralized repository for event schemas with compatibility rules.
+    - name: Compatibility
+      description: BACKWARD, FORWARD, FULL, plus TRANSITIVE variants; defines allowed schema evolution.
+    - name: Subject
+      description: Schema-registry-level grouping of versioned schemas (often "<topic>-value").
+    - name: Versioning
+      description: Per-schema integer or semantic version tracked by the registry.
+    - name: Filtering
+      description: >-
+        Server-side or client-side rules that drop unwanted events. EventBridge
+        event patterns, Event Grid advanced filters, Pub/Sub filters,
+        CloudEvents SQL (CE SQL) expressions.
+
+  formats:
+    - name: JSON Schema
+      description: Canonical schema language for JSON payloads.
+    - name: Avro
+      description: Binary serialization with schema embedded or referenced; native to Kafka.
+    - name: Protobuf
+      description: Binary serialization defined by .proto files.
+    - name: XML Schema
+      description: XSD; used in enterprise messaging and SOAP-era integrations.
+    - name: CloudEvents JSON Format
+      description: JSON serialization of the CloudEvents envelope (v1.0.2).
+    - name: CloudEvents Avro Format
+      description: Avro serialization of the CloudEvents envelope (v1.0.2).
+    - name: CloudEvents Protobuf Format
+      description: Protobuf serialization of the CloudEvents envelope (v1.0.2).
+
+  specifications:
+    - name: CloudEvents 1.0.2
+      description: CNCF-graduated envelope spec. Required attributes id, source, specversion, type.
+    - name: AsyncAPI
+      description: Linux Foundation event-driven API description language.
+    - name: MQTT 5.0
+      description: OASIS standard pub/sub protocol for IoT.
+    - name: AMQP 1.0
+      description: OASIS standard and ISO/IEC 19464 messaging protocol.
+    - name: STOMP 1.2
+      description: Simple Text Oriented Messaging Protocol.
+    - name: JSON Schema 2020-12
+      description: JSON Schema draft commonly referenced by AsyncAPI and CloudEvents.
+
+  personas:
+    - name: Platform Engineer
+      description: Operates the broker fleet (Kafka, Pulsar, NATS) and the schema registry.
+    - name: Producer Engineer
+      description: Engineer instrumenting an application or service to emit events.
+    - name: Consumer Engineer
+      description: Engineer building services that subscribe to and react to events.
+    - name: Schema Steward
+      description: Owns compatibility rules and approves schema evolution PRs.
+    - name: Data Engineer
+      description: Connects event streams to warehouses, lakes, and analytics platforms.
+
+  workflows:
+    - name: Topic Onboarding
+      description: >-
+        Producer requests a new topic, registers a schema, declares an owner,
+        and gets the registry subject created with the team's compatibility
+        policy.
+    - name: Schema Evolution
+      description: >-
+        Producer proposes a new schema version; registry checks compatibility
+        against existing consumers; PR is merged and rolled out.
+    - name: Event Replay
+      description: >-
+        Operator resets a consumer group to an earlier offset or timestamp and
+        re-processes events for backfill or recovery.
+    - name: Dead Letter Triage
+      description: >-
+        Subscription's dead-letter queue is inspected, root cause identified,
+        and events are re-published after fix.
+
+brokers:
+  - name: Apache Kafka
+    url: https://kafka.apache.org
+  - name: Apache Pulsar
+    url: https://pulsar.apache.org
+  - name: NATS
+    url: https://nats.io
+  - name: Redpanda
+    url: https://redpanda.com
+  - name: IBM MQ
+    url: https://www.ibm.com/products/mq
+  - name: AWS EventBridge
+    url: https://aws.amazon.com/eventbridge
+  - name: Azure Event Grid
+    url: https://azure.microsoft.com/en-us/products/event-grid
+  - name: Google Cloud Pub/Sub
+    url: https://cloud.google.com/pubsub
+  - name: Confluent Cloud
+    url: https://www.confluent.io/confluent-cloud
+
+registries:
+  - name: Confluent Schema Registry
+    url: https://docs.confluent.io/platform/current/schema-registry/index.html
+  - name: Apicurio Registry
+    url: https://www.apicur.io/registry
+
+specifications:
+  - name: CloudEvents
+    url: https://cloudevents.io
+    version: '1.0.2'
+  - name: AsyncAPI
+    url: https://www.asyncapi.com
+  - name: MQTT
+    url: https://mqtt.org
+    version: '5.0'
+  - name: AMQP
+    url: https://www.amqp.org
+    version: '1.0'
+  - name: STOMP
+    url: https://stomp.github.io
+    version: '1.2'

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/events/json-schema/events-event-source-schema.json",
+  "title": "Event Source",
+  "description": "Descriptor for an event-emitting system: a Kafka topic, a Pulsar tenant/namespace/topic, an EventBridge bus, an Event Grid topic, a Pub/Sub topic, an MQTT topic, or any system that produces CloudEvents. Captures identity, transport, broker, schema, and the CloudEvents 'source' attribute the system stamps onto outbound events.",
+  "type": "object",
+  "required": ["id", "name", "broker", "protocol", "cloudEventsSource"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable identifier for the event source within the catalog."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name (e.g. 'orders.placed' or 'aws.s3.objectCreated')."
+    },
+    "description": {
+      "type": "string",
+      "description": "What this source emits and the business context for the events."
+    },
+    "broker": {
+      "type": "string",
+      "enum": [
+        "Apache Kafka",
+        "Apache Pulsar",
+        "NATS",
+        "Redpanda",
+        "IBM MQ",
+        "AWS EventBridge",
+        "Azure Event Grid",
+        "Azure Event Hubs",
+        "Google Cloud Pub/Sub",
+        "Confluent Cloud",
+        "RabbitMQ",
+        "Solace",
+        "HiveMQ",
+        "EMQX",
+        "Mosquitto",
+        "Custom"
+      ],
+      "description": "The broker or messaging platform hosting this source."
+    },
+    "protocol": {
+      "type": "string",
+      "enum": ["Kafka", "Pulsar Binary", "NATS", "AMQP 1.0", "AMQP 0-9-1", "MQTT 3.1.1", "MQTT 5.0", "STOMP", "HTTP", "WebSocket"],
+      "description": "Wire protocol used to publish and consume from this source."
+    },
+    "transportEndpoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "Connection URL or bootstrap endpoint (e.g. kafka://broker:9092, mqtts://broker:8883, https://eventgrid.example/api/events)."
+    },
+    "topicOrChannel": {
+      "type": "string",
+      "description": "Broker-specific identifier — Kafka topic, Pulsar topic, NATS subject, MQTT topic filter, EventBridge bus name, Event Grid topic name, Pub/Sub topic ID."
+    },
+    "partitionCount": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Partition count for log-based brokers (Kafka, Pulsar, Redpanda)."
+    },
+    "retention": {
+      "type": "object",
+      "description": "Retention policy for stored events.",
+      "properties": {
+        "duration": { "type": "string", "description": "ISO 8601 duration (e.g. P7D for seven days)." },
+        "sizeBytes": { "type": "integer", "minimum": 0 },
+        "compaction": { "type": "boolean", "description": "Whether log compaction is enabled (Kafka/Pulsar)." }
+      }
+    },
+    "deliveryGuarantee": {
+      "type": "string",
+      "enum": ["at-most-once", "at-least-once", "exactly-once"],
+      "description": "End-to-end delivery semantics this source offers consumers."
+    },
+    "orderingScope": {
+      "type": "string",
+      "enum": ["none", "partition", "key", "global"],
+      "description": "Where order is preserved. 'partition' for Kafka, 'key' for Pub/Sub ordering keys, 'global' for Pulsar single-partition or NATS single-stream."
+    },
+    "cloudEventsSource": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "Value this source will stamp into the CloudEvents 'source' attribute on emitted events. SHOULD be unique across the event catalog."
+    },
+    "cloudEventsTypes": {
+      "type": "array",
+      "description": "CloudEvents 'type' values produced by this source.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "schemaRegistry": {
+      "type": "object",
+      "description": "Schema registry binding for payloads emitted on this source.",
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "enum": ["Confluent Schema Registry", "Apicurio Registry", "AWS Glue Schema Registry", "Azure Schema Registry", "Other", "None"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "subject": { "type": "string", "description": "Registry subject name (often {topic}-value)." },
+        "format": {
+          "type": "string",
+          "enum": ["JSON Schema", "Avro", "Protobuf", "XML Schema"]
+        },
+        "compatibility": {
+          "type": "string",
+          "enum": ["NONE", "BACKWARD", "BACKWARD_TRANSITIVE", "FORWARD", "FORWARD_TRANSITIVE", "FULL", "FULL_TRANSITIVE"]
+        }
+      }
+    },
+    "asyncApi": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to an AsyncAPI document that documents this source."
+    },
+    "owner": {
+      "type": "object",
+      "description": "Team or service that owns the source.",
+      "properties": {
+        "team": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

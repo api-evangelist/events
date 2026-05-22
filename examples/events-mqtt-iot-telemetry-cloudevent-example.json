@@ -1,0 +1,18 @@
+{
+  "specversion": "1.0",
+  "type": "io.sensors.temperature.reading.v1",
+  "source": "mqtt://broker.example.com/fleet-a/sensors/temp-0042",
+  "subject": "fleet-a/sensors/temp-0042",
+  "id": "5f8e1d6a-4c3b-4a2f-9c1d-8b7e6f5a4d3c",
+  "time": "2026-05-22T14:10:42.512Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "sensorId": "temp-0042",
+    "fleet": "fleet-a",
+    "celsius": 22.4,
+    "humidity": 41.7,
+    "batteryPct": 84,
+    "rssiDbm": -67,
+    "qos": 1
+  }
+}

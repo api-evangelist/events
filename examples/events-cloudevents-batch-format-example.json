@@ -1,0 +1,30 @@
+[
+  {
+    "specversion": "1.0",
+    "type": "com.example.user.created.v1",
+    "source": "/services/identity",
+    "id": "01HZQF40000000000000000001",
+    "time": "2026-05-22T14:11:00Z",
+    "datacontenttype": "application/json",
+    "data": { "userId": "u_001", "email": "a@example.com" }
+  },
+  {
+    "specversion": "1.0",
+    "type": "com.example.user.created.v1",
+    "source": "/services/identity",
+    "id": "01HZQF40000000000000000002",
+    "time": "2026-05-22T14:11:01Z",
+    "datacontenttype": "application/json",
+    "data": { "userId": "u_002", "email": "b@example.com" }
+  },
+  {
+    "specversion": "1.0",
+    "type": "com.example.user.email_verified.v1",
+    "source": "/services/identity",
+    "subject": "u_001",
+    "id": "01HZQF40000000000000000003",
+    "time": "2026-05-22T14:11:42Z",
+    "datacontenttype": "application/json",
+    "data": { "userId": "u_001", "verifiedAt": "2026-05-22T14:11:42Z" }
+  }
+]

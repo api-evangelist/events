@@ -1,0 +1,583 @@
+name: Events
+description: >-
+  Event-driven APIs catalog. Documents the landscape of brokers, streaming
+  platforms, schema registries, and the specifications that standardize how
+  events are described, transported, and stored. "Events" is the broader
+  category that contains webhooks (HTTP callbacks) as one delivery surface,
+  alongside message brokers, log-based streaming platforms, and managed pub/sub
+  services. The catalog aligns around CloudEvents (CNCF graduated, v1.0.2) as
+  the spec for the event payload envelope and AsyncAPI as the spec for the
+  event API surface (channels, operations, messages, servers), and covers the
+  major open-source brokers (Apache Kafka, Apache Pulsar, NATS, Redpanda, IBM
+  MQ), cloud-native managed buses (AWS EventBridge, Azure Event Grid, Google
+  Cloud Pub/Sub, Confluent Cloud), schema registries (Confluent Schema
+  Registry, Apicurio Registry), and streaming-analytics SaaS (Tinybird,
+  Materialize). Wire-level protocols included are MQTT (OASIS), AMQP (OASIS /
+  ISO 19464), and STOMP.
+url: https://github.com/api-evangelist/events
+humanURL: https://github.com/api-evangelist/events
+image: ''
+tags:
+  - Events
+  - Event-Driven
+  - Event Streaming
+  - Messaging
+  - Pub Sub
+  - Brokers
+  - CloudEvents
+  - AsyncAPI
+  - Topic
+created: '2026-05-22'
+modified: '2026-05-22'
+specificationVersion: '0.18'
+type: Index
+
+apis:
+  - name: CloudEvents
+    description: >-
+      CNCF-graduated specification (graduated January 25, 2024) for describing
+      event data in a common way. Defines a payload envelope with required
+      attributes id, source, specversion, and type, and optional attributes
+      datacontenttype, dataschema, subject, and time. Available format bindings
+      cover JSON, AVRO, and Protobuf (XML and AVRO Compact in working draft);
+      transport bindings cover HTTP, Kafka, AMQP, MQTT, NATS, and WebSockets.
+      The CloudEvents 1.0.2 release is the current stable version, with 1.0.3
+      in working draft.
+    humanURL: https://cloudevents.io
+    baseURL: ''
+    tags:
+      - Specification
+      - Envelope
+      - CNCF
+      - Standards
+    properties:
+      - type: Portal
+        url: https://cloudevents.io
+      - type: Specification
+        url: https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md
+      - type: GitHubOrganization
+        url: https://github.com/cloudevents
+      - type: GitHubRepository
+        url: https://github.com/cloudevents/spec
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-go
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-javascript
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-python
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-java
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-csharp
+      - type: SDK
+        url: https://github.com/cloudevents/sdk-rust
+
+  - name: AsyncAPI
+    description: >-
+      Linux Foundation-hosted specification for event-driven APIs. Describes
+      servers, channels, operations, messages, schemas, and protocol bindings
+      for Kafka, AMQP, MQTT, NATS, WebSockets, HTTP, and more. AsyncAPI is the
+      asynchronous counterpart to OpenAPI and provides a generator, CLI, and
+      Studio for editing and validating documents.
+    humanURL: https://www.asyncapi.com
+    tags:
+      - Specification
+      - Async
+      - Standards
+      - Linux Foundation
+    properties:
+      - type: Portal
+        url: https://www.asyncapi.com
+      - type: Documentation
+        url: https://www.asyncapi.com/docs
+      - type: GitHubOrganization
+        url: https://github.com/asyncapi
+      - type: GitHubRepository
+        url: https://github.com/asyncapi/spec
+      - type: Tools
+        url: https://studio.asyncapi.com
+      - type: CLI
+        url: https://github.com/asyncapi/cli
+
+  - name: Apache Kafka
+    description: >-
+      Open-source distributed event streaming platform governed by the Apache
+      Software Foundation. Described as used by "thousands of companies for
+      high-performance data pipelines, streaming analytics, data integration,
+      and mission-critical applications." Core abstractions: topics, partitions,
+      offsets, producers, consumers, consumer groups, brokers. Kafka 4.x runs
+      on KRaft (no ZooKeeper). Includes Kafka Streams (stream processing) and
+      Kafka Connect (integration).
+    humanURL: https://kafka.apache.org
+    tags:
+      - Broker
+      - Streaming
+      - Open Source
+      - Apache
+    properties:
+      - type: Portal
+        url: https://kafka.apache.org
+      - type: Documentation
+        url: https://kafka.apache.org/documentation
+      - type: GitHubRepository
+        url: https://github.com/apache/kafka
+      - type: Protocol
+        url: https://kafka.apache.org/protocol
+
+  - name: Apache Pulsar
+    description: >-
+      Open-source distributed messaging and streaming platform built for the
+      cloud. Top-10 Apache Software Foundation project (740+ contributors,
+      current version 4.2). Multi-tenant by design (tenants, namespaces, topics,
+      subscriptions), supports both queue and pub/sub messaging models, layered
+      architecture separates stateless brokers from BookKeeper storage. Includes
+      Pulsar Functions (serverless processing) and Pulsar IO (connectors).
+    humanURL: https://pulsar.apache.org
+    tags:
+      - Broker
+      - Streaming
+      - Open Source
+      - Apache
+    properties:
+      - type: Portal
+        url: https://pulsar.apache.org
+      - type: Documentation
+        url: https://pulsar.apache.org/docs
+      - type: GitHubRepository
+        url: https://github.com/apache/pulsar
+
+  - name: NATS
+    description: >-
+      CNCF incubating high-performance, lightweight messaging system designed
+      for cloud, edge, and IoT. Supports pub/sub, request/reply, and queue
+      groups over a text-based protocol. JetStream extends NATS with persistent
+      streams, key-value, and object storage. Official clients in Go, Rust,
+      JavaScript/TypeScript, Python, Java, C#, C, Ruby, and Elixir.
+    humanURL: https://nats.io
+    tags:
+      - Broker
+      - Messaging
+      - CNCF
+      - Open Source
+    properties:
+      - type: Portal
+        url: https://nats.io
+      - type: Documentation
+        url: https://docs.nats.io
+      - type: GitHubOrganization
+        url: https://github.com/nats-io
+      - type: GitHubRepository
+        url: https://github.com/nats-io/nats-server
+
+  - name: Redpanda
+    description: >-
+      Kafka API-compatible streaming data platform written in C++ (no JVM, no
+      ZooKeeper). Self-described as an "Agentic Data Plane and Data Streaming
+      platform for real-time performance, AI innovation, and simplified
+      operations." Ships Redpanda Connect (integration), Redpanda SQL (query
+      engine, post Oxla acquisition), and Redpanda Cloud (managed SaaS).
+      Source-available under the Business Source License.
+    humanURL: https://redpanda.com
+    tags:
+      - Broker
+      - Streaming
+      - Kafka API
+      - Hosted
+    properties:
+      - type: Portal
+        url: https://redpanda.com
+      - type: Documentation
+        url: https://docs.redpanda.com
+      - type: GitHubOrganization
+        url: https://github.com/redpanda-data
+      - type: GitHubRepository
+        url: https://github.com/redpanda-data/redpanda
+
+  - name: IBM MQ
+    description: >-
+      Enterprise messaging middleware from IBM. Long the de facto standard for
+      assured-once message delivery in regulated industries (banking,
+      government). Exposes the MQI native API, JMS, AMQP 1.0, MQTT, and a REST
+      messaging API. Current generation is IBM MQ 9.4.
+    humanURL: https://www.ibm.com/products/mq
+    tags:
+      - Broker
+      - Messaging
+      - Enterprise
+    properties:
+      - type: Portal
+        url: https://www.ibm.com/products/mq
+      - type: Documentation
+        url: https://www.ibm.com/docs/en/ibm-mq
+
+  - name: AWS EventBridge
+    description: >-
+      AWS serverless event router. "EventBridge is a serverless service that
+      uses events to connect application components together, making it easier
+      for you to build scalable event-driven applications." Two delivery
+      surfaces: event buses (many-to-many routing) and pipes (point-to-point
+      with optional enrichment/transform). EventBridge Scheduler adds cron/rate
+      scheduling. Includes a Schema Registry that supports JSON Schema and
+      OpenAPI 3 representations of EventBridge events.
+    humanURL: https://aws.amazon.com/eventbridge
+    tags:
+      - Bus
+      - Cloud
+      - AWS
+      - Serverless
+    properties:
+      - type: Portal
+        url: https://aws.amazon.com/eventbridge
+      - type: Documentation
+        url: https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html
+      - type: APIReference
+        url: https://docs.aws.amazon.com/eventbridge/latest/APIReference
+
+  - name: Azure Event Grid
+    description: >-
+      Azure's "highly scalable and fully managed publish-subscribe service for
+      message distribution." Supports both HTTP push/pull delivery and an MQTT
+      v3.1.1 / v5.0 broker mode for IoT clients. Supports CloudEvents 1.0
+      natively and the Event Grid native schema. Concepts include namespaces,
+      topics (system, custom, partner, domain), event subscriptions, and dead
+      lettering.
+    humanURL: https://azure.microsoft.com/en-us/products/event-grid
+    tags:
+      - Bus
+      - Cloud
+      - Azure
+      - MQTT
+    properties:
+      - type: Portal
+        url: https://azure.microsoft.com/en-us/products/event-grid
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/azure/event-grid/overview
+
+  - name: Google Cloud Pub/Sub
+    description: >-
+      Google Cloud's asynchronous and scalable messaging service that decouples
+      message producers from consumers with typical latencies around 100 ms.
+      Uses per-message leasing (not partitions) for parallel processing. Topics
+      and subscriptions (push and pull), schemas (Avro and Protobuf), ordering
+      keys, dead-letter topics, snapshots, and seek. Pub/Sub Lite offers a
+      cheaper zonal/regional partitioned variant for high-volume workloads.
+    humanURL: https://cloud.google.com/pubsub
+    tags:
+      - Bus
+      - Cloud
+      - Google Cloud
+      - Managed
+    properties:
+      - type: Portal
+        url: https://cloud.google.com/pubsub
+      - type: Documentation
+        url: https://cloud.google.com/pubsub/docs/overview
+      - type: APIReference
+        url: https://cloud.google.com/pubsub/docs/reference/rest
+
+  - name: Confluent Cloud
+    description: >-
+      Commercial managed service from Confluent positioned as "the industry's
+      only fully managed data streaming platform." Built on the Kora
+      cloud-native Kafka engine. Tiers: Basic, Standard, Enterprise, and
+      Freight. Bundles Kafka, Schema Registry, Connect (120+ pre-built
+      connectors, 90+ fully managed), Stream Governance, Tableflow (topics to
+      tables), and Confluent Cloud for Apache Flink for stream processing.
+      99.99% uptime SLA on multi-AZ deployments. Runs on AWS, Azure, and GCP.
+    humanURL: https://www.confluent.io/confluent-cloud
+    tags:
+      - Streaming
+      - Hosted
+      - Kafka
+      - SaaS
+    properties:
+      - type: Portal
+        url: https://www.confluent.io/confluent-cloud
+      - type: Documentation
+        url: https://docs.confluent.io/cloud/current/overview.html
+      - type: APIReference
+        url: https://docs.confluent.io/cloud/current/api.html
+      - type: Pricing
+        url: https://www.confluent.io/confluent-cloud/pricing
+
+  - name: Confluent Schema Registry
+    description: >-
+      Central repository with a RESTful interface for registering and evolving
+      schemas in Avro, JSON Schema, and Protobuf. Enforces compatibility rules
+      (backward, forward, full, transitive) for Kafka topics. Available in
+      Confluent Platform and as a managed component of Confluent Cloud. Schema
+      Linking syncs schemas across hybrid and multicloud deployments.
+    humanURL: https://docs.confluent.io/platform/current/schema-registry/index.html
+    tags:
+      - Registry
+      - Schemas
+      - Governance
+    properties:
+      - type: Documentation
+        url: https://docs.confluent.io/platform/current/schema-registry/index.html
+      - type: APIReference
+        url: https://docs.confluent.io/platform/current/schema-registry/develop/api.html
+      - type: GitHubRepository
+        url: https://github.com/confluentinc/schema-registry
+
+  - name: Apicurio Registry
+    description: >-
+      Open-source schema and API artifact registry backed by Red Hat (Apache
+      2.0). Stores OpenAPI, AsyncAPI, Avro, JSON Schema, Protobuf, Kafka
+      Connect schemas, GraphQL SDL, WSDL, and XSD. Configurable content rules
+      drive evolution and validity checks; storage backends include Kafka,
+      PostgreSQL, and Microsoft SQL Server. Latest stable version 3.2.4.
+    humanURL: https://www.apicur.io/registry
+    tags:
+      - Registry
+      - Schemas
+      - Open Source
+      - Red Hat
+    properties:
+      - type: Portal
+        url: https://www.apicur.io/registry
+      - type: Documentation
+        url: https://www.apicur.io/registry/docs
+      - type: GitHubRepository
+        url: https://github.com/Apicurio/apicurio-registry
+
+  - name: Tinybird
+    description: >-
+      Managed ClickHouse-based SaaS for real-time analytics on event data.
+      Ingests events via an HTTP Events API (up to 1,000 req/s) plus connectors
+      for Kafka, S3, GCS, BigQuery, Snowflake, and PostgreSQL. Pipes transform
+      streaming data; published APIs expose SQL queries as HTTP endpoints with
+      sub-second latency. Customer footprint cited: 1.47B requests/month.
+    humanURL: https://www.tinybird.co
+    tags:
+      - Streaming
+      - Analytics
+      - SaaS
+      - ClickHouse
+    properties:
+      - type: Portal
+        url: https://www.tinybird.co
+      - type: Documentation
+        url: https://www.tinybird.co/docs
+      - type: APIReference
+        url: https://www.tinybird.co/docs/get-data-in/ingest-apis/events-api
+
+  - name: Materialize
+    description: >-
+      Streaming SQL database based on incremental view maintenance. Continually
+      ingests CDC from Postgres, Kafka, and other sources, then keeps SQL views
+      up to date with minimal recomputation. Materialized views act as
+      continuously-updated event streams that downstream apps subscribe to.
+      Available as managed cloud, self-managed, and a local emulator.
+    humanURL: https://materialize.com
+    tags:
+      - Streaming
+      - SQL
+      - CDC
+      - SaaS
+    properties:
+      - type: Portal
+        url: https://materialize.com
+      - type: Documentation
+        url: https://materialize.com/docs
+
+  - name: MQTT
+    description: >-
+      OASIS standard messaging protocol for the Internet of Things. Lightweight
+      publish/subscribe transport for remote, constrained devices. Current
+      version is MQTT 5.0 (predecessors 3.1, 3.1.1). Three QoS levels (0 at
+      most once, 1 at least once, 2 exactly once), retained messages,
+      last-will, persistent sessions, MQTT over WebSockets, TLS, and OAuth /
+      JWT authentication. MQTT-SN targets very constrained networks.
+    humanURL: https://mqtt.org
+    tags:
+      - Protocol
+      - IoT
+      - Pub Sub
+      - OASIS
+    properties:
+      - type: Portal
+        url: https://mqtt.org
+      - type: Specification
+        url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
+
+  - name: AMQP
+    description: >-
+      Advanced Message Queuing Protocol. AMQP 1.0 is both an OASIS standard
+      and an International Standard (ISO/IEC 19464). Wire-level binary protocol
+      defining nodes, links, sessions, and frames. Mission per the spec home:
+      "To become the standard protocol for interoperability between all
+      messaging middleware." Major implementations include Microsoft Azure
+      Service Bus, Apache ActiveMQ Artemis, and SwiftMQ for 1.0; RabbitMQ
+      remains the canonical AMQP 0-9-1 implementation.
+    humanURL: https://www.amqp.org
+    tags:
+      - Protocol
+      - Messaging
+      - OASIS
+      - ISO
+    properties:
+      - type: Portal
+        url: https://www.amqp.org
+      - type: Specification
+        url: http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html
+
+  - name: STOMP
+    description: >-
+      Simple (or Streaming) Text Oriented Messaging Protocol. Lightweight,
+      text-based wire protocol for message-oriented middleware. Widely used as
+      an alternative front-end on brokers like Apache ActiveMQ, RabbitMQ, and
+      HornetQ, especially from browser JavaScript clients via WebSocket.
+    humanURL: https://stomp.github.io
+    tags:
+      - Protocol
+      - Messaging
+      - Text Based
+    properties:
+      - type: Portal
+        url: https://stomp.github.io
+      - type: Specification
+        url: https://stomp.github.io/stomp-specification-1.2.html
+
+common:
+  - type: Portal
+    url: https://github.com/api-evangelist/events
+  - type: GitHubOrganization
+    url: https://github.com/api-evangelist
+  - type: Vocabulary
+    url: vocabulary/events-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/events-context.jsonld
+
+  - type: Features
+    data:
+      - name: Pub Sub Messaging
+        description: >-
+          Many-to-many fan-out where producers publish to a topic and any
+          number of subscribers receive a copy. Core to MQTT, NATS, Google
+          Pub/Sub, Kafka (consumer-group fan-out), and EventBridge.
+      - name: Queue Messaging
+        description: >-
+          Point-to-point work distribution where each message is consumed by
+          exactly one worker. Native to IBM MQ, RabbitMQ (AMQP 0-9-1), Pulsar
+          shared subscriptions, and NATS queue groups.
+      - name: Log Based Streaming
+        description: >-
+          Durable, ordered, partitioned commit log that consumers read by
+          offset. Kafka and Redpanda are the canonical implementations; Pulsar
+          and Pub/Sub Lite share many properties.
+      - name: Schema Governance
+        description: >-
+          Schema registries (Confluent, Apicurio) version event schemas and
+          enforce compatibility rules so producers cannot break consumers.
+      - name: CloudEvents Envelope
+        description: >-
+          Standard required attributes (id, source, specversion, type) plus
+          optional (datacontenttype, dataschema, subject, time) wrap any event
+          payload, with bindings for HTTP, Kafka, AMQP, MQTT, NATS,
+          WebSockets, JSON, Avro, and Protobuf.
+      - name: AsyncAPI Description
+        description: >-
+          AsyncAPI documents describe the channels, operations, messages, and
+          bindings of an event-driven API the way OpenAPI describes a REST
+          API.
+
+  - type: UseCases
+    data:
+      - name: Microservice Integration
+        description: >-
+          Decoupling services so producers emit events without coupling to
+          downstream consumers.
+      - name: Change Data Capture
+        description: >-
+          Replicating database changes (Postgres logical replication, MySQL
+          binlog, MongoDB change streams) onto Kafka, Pulsar, or Materialize
+          for downstream consumers.
+      - name: IoT Telemetry
+        description: >-
+          Constrained devices publishing readings over MQTT or NATS to cloud
+          gateways such as Azure Event Grid or AWS IoT Core.
+      - name: Real Time Analytics
+        description: >-
+          Streaming events into ClickHouse-, Pinot-, or Druid-based platforms
+          (Tinybird, Materialize) to power user-facing dashboards with
+          sub-second freshness.
+      - name: Event Sourcing
+        description: >-
+          Storing every state change as an immutable event in a durable log
+          (Kafka, Pulsar) so application state can be rebuilt by replay.
+      - name: Webhook Delivery
+        description: >-
+          HTTP-based fan-out from a SaaS to subscriber URLs. The narrowest
+          slice of the event landscape; covered in detail in the api-evangelist
+          webhooks topic repo.
+
+  - type: Integrations
+    data:
+      - name: CloudEvents
+        description: >-
+          Common envelope adopted across Azure Event Grid, Knative, GitHub
+          Webhooks (via cloudevents-go binding), and most CNCF event-emitting
+          projects.
+      - name: AsyncAPI
+        description: >-
+          API description format used by Postman, Microcks, Apicurio, and
+          numerous broker dashboards to render an event API surface.
+      - name: Kafka Protocol
+        description: >-
+          De facto wire protocol; supported natively by Confluent Cloud,
+          Redpanda, Aiven, and (via proxies) Azure Event Hubs and Pulsar.
+      - name: MQTT
+        description: >-
+          Native protocol for Azure Event Grid namespaces, AWS IoT Core, HiveMQ,
+          EMQX, and Mosquitto.
+      - name: Schema Registry
+        description: >-
+          Confluent Schema Registry and Apicurio Registry plug into Kafka
+          serializers/deserializers in every major language client.
+
+  - type: Solutions
+    data:
+      - name: Open Source Brokers
+        description: >-
+          Apache Kafka, Apache Pulsar, NATS, Redpanda Community Edition, and
+          RabbitMQ cover most self-hosted deployments.
+      - name: Managed Cloud Buses
+        description: >-
+          AWS EventBridge, Azure Event Grid, and Google Cloud Pub/Sub provide
+          serverless, pay-per-event delivery within their respective clouds.
+      - name: Managed Streaming SaaS
+        description: >-
+          Confluent Cloud, Redpanda Cloud, Aiven for Kafka, and Tinybird offer
+          fully managed Kafka or ClickHouse with their own consoles, APIs, and
+          SLAs.
+      - name: Specification Stack
+        description: >-
+          CloudEvents (envelope), AsyncAPI (API description), and JSON Schema
+          / Avro / Protobuf (payload schema) compose into the standards layer
+          that brokers and registries implement.
+
+  - type: RelatedTopics
+    data:
+      - name: Webhooks
+        description: >-
+          HTTP callbacks are the narrowest delivery surface of the event
+          landscape. See the api-evangelist webhooks topic repo for the
+          dedicated index.
+      - name: Streaming
+        description: >-
+          Log-based event streaming overlaps heavily with Kafka and Pulsar.
+      - name: Async APIs
+        description: >-
+          AsyncAPI-specific tooling and ecosystem.
+      - name: Event Driven Architecture
+        description: >-
+          Architectural patterns built on top of these brokers and specs.
+      - name: Event Sourcing
+        description: >-
+          A specific pattern using durable event logs as the system of record.
+
+maintainers:
+  - FN: Kin Lane
+    email: kinlane@gmail.com
+    url: http://kinlane.com

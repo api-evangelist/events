@@ -1,0 +1,24 @@
+{
+  "_comment": "CloudEvents Kafka protocol binding, binary content mode. CloudEvents context attributes ride in Kafka record headers; the Kafka record value is the raw event payload. The JSON below documents what the wire form looks like in a debugger / kafkactl output, not a literal JSON-serialized record.",
+  "topic": "orders.placed",
+  "partition": 3,
+  "offset": 9128442,
+  "key": "cust_9d23",
+  "timestamp": "2026-05-22T14:08:17.103Z",
+  "headers": {
+    "ce_specversion":     "1.0",
+    "ce_type":            "com.example.orders.placed.v1",
+    "ce_source":          "/services/order-service",
+    "ce_id":              "01HZQF3K7T0RPMK6N3CXVQXX2A",
+    "ce_subject":         "order-7c1f9a2e",
+    "ce_time":            "2026-05-22T14:08:17Z",
+    "ce_dataschema":      "https://schemas.example.com/orders/placed/v1.json",
+    "content-type":       "application/json"
+  },
+  "value": {
+    "orderId": "7c1f9a2e",
+    "customerId": "cust_9d23",
+    "totalCents": 4197,
+    "currency": "USD"
+  }
+}
