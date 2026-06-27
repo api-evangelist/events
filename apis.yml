@@ -59,17 +59,17 @@ apis:
     url: https://github.com/cloudevents
   - type: GitHubRepository
     url: https://github.com/cloudevents/spec
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-go
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-javascript
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-python
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-java
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-csharp
-  - type: SDK
+  - type: SDKs
     url: https://github.com/cloudevents/sdk-rust
 
   - url: graphql/events-graphql.md
