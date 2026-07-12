@@ -442,6 +442,8 @@ apis:
     url: https://stomp.github.io/stomp-specification-1.2.html
 
 common:
+- type: DomainSecurity
+  url: security/events-domain-security.yml
 - type: Portal
   url: https://github.com/api-evangelist/events
 - type: GitHubOrganization
