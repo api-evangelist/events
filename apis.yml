@@ -29,6 +29,16 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/events.png
 tags:
+- Event
+- Event-Driven
+- Event Streaming
+- Messaging
+- Pub-Sub
+- Brokers
+- CloudEvents
+- AsyncAPI
+- Topic
+tags_raw:
 - Events
 - Event-Driven
 - Event Streaming
@@ -123,6 +133,11 @@ apis:
     Kafka Connect (integration).
   humanURL: https://kafka.apache.org
   tags:
+  - Brokers
+  - Streaming
+  - Open-Source
+  - Apache
+  tags_raw:
   - Broker
   - Streaming
   - Open Source
@@ -147,6 +162,11 @@ apis:
     Pulsar Functions (serverless processing) and Pulsar IO (connectors).
   humanURL: https://pulsar.apache.org
   tags:
+  - Brokers
+  - Streaming
+  - Open-Source
+  - Apache
+  tags_raw:
   - Broker
   - Streaming
   - Open Source
@@ -168,6 +188,11 @@ apis:
     JavaScript/TypeScript, Python, Java, C#, C, Ruby, and Elixir.
   humanURL: https://nats.io
   tags:
+  - Brokers
+  - Messaging
+  - CNCF
+  - Open-Source
+  tags_raw:
   - Broker
   - Messaging
   - CNCF
@@ -192,6 +217,11 @@ apis:
     Source-available under the Business Source License.
   humanURL: https://redpanda.com
   tags:
+  - Brokers
+  - Streaming
+  - Kafka API
+  - Hosted
+  tags_raw:
   - Broker
   - Streaming
   - Kafka API
@@ -214,6 +244,10 @@ apis:
     messaging API. Current generation is IBM MQ 9.4.
   humanURL: https://www.ibm.com/products/mq
   tags:
+  - Brokers
+  - Messaging
+  - Enterprise
+  tags_raw:
   - Broker
   - Messaging
   - Enterprise
@@ -302,6 +336,11 @@ apis:
   - Streaming
   - Hosted
   - Kafka
+  - Software-as-a-Service
+  tags_raw:
+  - Streaming
+  - Hosted
+  - Kafka
   - SaaS
   properties:
   - type: Portal
@@ -344,6 +383,11 @@ apis:
   tags:
   - Registry
   - Schemas
+  - Open-Source
+  - Red Hat
+  tags_raw:
+  - Registry
+  - Schemas
   - Open Source
   - Red Hat
   properties:
@@ -363,6 +407,11 @@ apis:
     sub-second latency. Customer footprint cited: 1.47B requests/month.
   humanURL: https://www.tinybird.co
   tags:
+  - Streaming
+  - Analytics
+  - Software-as-a-Service
+  - ClickHouse
+  tags_raw:
   - Streaming
   - Analytics
   - SaaS
@@ -387,6 +436,11 @@ apis:
   - Streaming
   - SQL
   - CDC
+  - Software-as-a-Service
+  tags_raw:
+  - Streaming
+  - SQL
+  - CDC
   - SaaS
   properties:
   - type: Portal
@@ -404,6 +458,11 @@ apis:
     JWT authentication. MQTT-SN targets very constrained networks.
   humanURL: https://mqtt.org
   tags:
+  - Protocol
+  - IoT
+  - Pub-Sub
+  - OASIS
+  tags_raw:
   - Protocol
   - IoT
   - Pub Sub
