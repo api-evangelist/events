@@ -46,7 +46,7 @@ tags:
 - Event-Driven
 - Event Streaming
 - Messaging
-- Pub Sub
+- Pub-Sub
 - Brokers
 - CloudEvents
 - AsyncAPI
@@ -473,7 +473,7 @@ apis:
   tags:
   - Protocol
   - IoT
-  - Pub Sub
+  - Pub-Sub
   - OASIS
   tags_raw:
   - Protocol
