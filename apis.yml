@@ -448,7 +448,7 @@ apis:
   tags:
   - Streaming
   - SQL
-  - CDC
+  - Change Data Capture
   - Software-as-a-Service
   tags_raw:
   - Streaming
