@@ -375,6 +375,10 @@ apis:
   humanURL: https://docs.confluent.io/platform/current/schema-registry/index.html
   tags:
   - Registry
+  - Schema
+  - Governance
+  tags_raw:
+  - Registry
   - Schemas
   - Governance
   properties:
@@ -395,7 +399,7 @@ apis:
   humanURL: https://www.apicur.io/registry
   tags:
   - Registry
-  - Schemas
+  - Schema
   - Open-Source
   - Red Hat
   tags_raw:
