@@ -106,8 +106,6 @@ apis:
   - type: SDKs
     url: https://github.com/cloudevents/sdk-rust
 
-  - url: graphql/events-graphql.md
-    type: GraphQL
 - name: AsyncAPI
   description: >-
     Linux Foundation-hosted specification for event-driven APIs. Describes
@@ -148,13 +146,14 @@ apis:
   tags:
   - Brokers
   - Streaming
-  - Open-Source
+  - Open Source
   - Apache
   tags_raw:
   - Broker
   - Streaming
   - Open Source
   - Apache
+  - Open-Source
   properties:
   - type: Portal
     url: https://kafka.apache.org
@@ -177,13 +176,14 @@ apis:
   tags:
   - Brokers
   - Streaming
-  - Open-Source
+  - Open Source
   - Apache
   tags_raw:
   - Broker
   - Streaming
   - Open Source
   - Apache
+  - Open-Source
   properties:
   - type: Portal
     url: https://pulsar.apache.org
@@ -204,12 +204,13 @@ apis:
   - Brokers
   - Messaging
   - CNCF
-  - Open-Source
+  - Open Source
   tags_raw:
   - Broker
   - Messaging
   - CNCF
   - Open Source
+  - Open-Source
   properties:
   - type: Portal
     url: https://nats.io
@@ -400,13 +401,14 @@ apis:
   tags:
   - Registry
   - Schema
-  - Open-Source
+  - Open Source
   - Red Hat
   tags_raw:
   - Registry
   - Schemas
   - Open Source
   - Red Hat
+  - Open-Source
   properties:
   - type: Portal
     url: https://www.apicur.io/registry
