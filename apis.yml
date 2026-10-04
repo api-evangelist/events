@@ -47,20 +47,20 @@ tags:
 - Event Streaming
 - Messaging
 - Pub-Sub
-- Brokers
 - CloudEvents
 - AsyncAPI
 - Topic
+- Message Broker
 tags_raw:
 - Events
 - Event-Driven
 - Event Streaming
 - Messaging
 - Pub Sub
-- Brokers
 - CloudEvents
 - AsyncAPI
 - Topic
+- Message Broker
 created: '2026-05-22'
 modified: '2026-05-22'
 specificationVersion: '0.23'
@@ -459,7 +459,7 @@ apis:
   tags_raw:
   - Streaming
   - SQL
-  - CDC
+  - Change Data Capture
   - SaaS
   properties:
   - type: Portal
@@ -683,3 +683,5 @@ maintainers:
 - FN: Kin Lane
   email: kinlane@gmail.com
   url: http://kinlane.com
+x-tags-removed:
+- Brokers
