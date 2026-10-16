@@ -1,21 +1,19 @@
-# Kin Score artifact — events — 2026-09-05T211839
+# Kin Score artifact — events — 2026-10-11T110117
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: events
-  schema_version: 0.18.3
-  scored_at: '2026-09-05'
-  run_ts: 2026-09-05T211839
-  composite: 27.3
+  schema_version: 0.23.0
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
+  composite: 28.8
   band: thin
   facets:
-    discoverability: 64.8
+    discoverability: 62.5
     contract_quality: 14.7
-    governance: 25.0
+    contract_governance: 23.5
     operational_transparency: 18.4
     developer_ergonomics: 50.0
-    commercial_clarity: 10.5
-    contract_governance: 25.0
     access_clarity: 10.5
   agent_readiness:
     score: 0.0
@@ -42,10 +40,10 @@ kin_score:
       agentic_commerce: false
   regulatory:
     applies: true
-    regime: Securities & Market Data
-    regime_id: securities_market_data
-    score: 18.3
-    matched_via: weak_tags
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 10.8
+    matched_via: fallback
   open_source:
     applies: true
     score: 50.0
