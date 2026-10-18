@@ -46,7 +46,7 @@ tags:
 - Event-Driven
 - Event Streaming
 - Messaging
-- Pub-Sub
+- Pub/Sub
 - CloudEvents
 - AsyncAPI
 - Topic
@@ -144,7 +144,7 @@ apis:
     Kafka Connect (integration).
   humanURL: https://kafka.apache.org
   tags:
-  - Brokers
+  - Brokerage
   - Streaming
   - Open Source
   - Apache
@@ -154,6 +154,7 @@ apis:
   - Open Source
   - Apache
   - Open-Source
+  - Brokers
   properties:
   - type: Portal
     url: https://kafka.apache.org
@@ -174,7 +175,7 @@ apis:
     Pulsar Functions (serverless processing) and Pulsar IO (connectors).
   humanURL: https://pulsar.apache.org
   tags:
-  - Brokers
+  - Brokerage
   - Streaming
   - Open Source
   - Apache
@@ -184,6 +185,7 @@ apis:
   - Open Source
   - Apache
   - Open-Source
+  - Brokers
   properties:
   - type: Portal
     url: https://pulsar.apache.org
@@ -201,7 +203,7 @@ apis:
     JavaScript/TypeScript, Python, Java, C#, C, Ruby, and Elixir.
   humanURL: https://nats.io
   tags:
-  - Brokers
+  - Brokerage
   - Messaging
   - CNCF
   - Open Source
@@ -211,6 +213,7 @@ apis:
   - CNCF
   - Open Source
   - Open-Source
+  - Brokers
   properties:
   - type: Portal
     url: https://nats.io
@@ -231,7 +234,7 @@ apis:
     Source-available under the Business Source License.
   humanURL: https://redpanda.com
   tags:
-  - Brokers
+  - Brokerage
   - Streaming
   - Kafka API
   - Hosted
@@ -240,6 +243,7 @@ apis:
   - Streaming
   - Kafka API
   - Hosted
+  - Brokers
   properties:
   - type: Portal
     url: https://redpanda.com
@@ -258,13 +262,14 @@ apis:
     messaging API. Current generation is IBM MQ 9.4.
   humanURL: https://www.ibm.com/products/mq
   tags:
-  - Brokers
+  - Brokerage
   - Messaging
   - Enterprise
   tags_raw:
   - Broker
   - Messaging
   - Enterprise
+  - Brokers
   properties:
   - type: Portal
     url: https://www.ibm.com/products/mq
@@ -304,6 +309,11 @@ apis:
     lettering.
   humanURL: https://azure.microsoft.com/en-us/products/event-grid
   tags:
+  - Bus
+  - Cloud
+  - Microsoft Azure
+  - MQTT
+  tags_raw:
   - Bus
   - Cloud
   - Azure
@@ -479,7 +489,7 @@ apis:
   tags:
   - Protocol
   - IoT
-  - Pub-Sub
+  - Pub/Sub
   - OASIS
   tags_raw:
   - Protocol
